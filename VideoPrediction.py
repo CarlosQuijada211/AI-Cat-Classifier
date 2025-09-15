@@ -19,7 +19,7 @@ img_width = 224
 
 class_names = ["Cleo", "Gataki"]
 
-video_name = "placeholder"  # Replace with your video file name without extension
+video_name = "both_separate_02"  # Replace with your video file name without extension
 
 # Open video file
 cap = cv2.VideoCapture(f"test_videos/{video_name}.mp4")
@@ -52,12 +52,25 @@ while True:
     # Predict
     predictions = model.predict(img_array, verbose=1)[0]
 
-    # Draw probabilities on frame
+    # Draw probabilities on frame (top-left corner)
     y0 = 30
     for i, prob in enumerate(predictions):
         text = f"{class_names[i]}: {prob:.2f}"
-        cv2.putText(frame, text, (10, y0), font, 1.5, (0, 255, 0), 2)
-        y0 += 50
+        cv2.putText(frame, text, (10, y0), font, 1.0, (0, 255, 0), 2)
+        y0 += 40
+
+    # Find the predicted class
+    predicted_index = np.argmax(predictions)
+    predicted_class = class_names[predicted_index]
+
+    # Draw black strip at bottom
+    strip_height = 60
+    frame_height, frame_width = frame.shape[:2]
+    cv2.rectangle(frame, (0, frame_height - strip_height), (frame_width, frame_height), (0, 0, 0), -1)
+
+    # Write predicted class in white
+    cv2.putText(frame, f"AI thinks: {predicted_class}", 
+                (20, frame_height - 20), font, 1.5, (255, 255, 255), 3)
 
     # Write to output
     out.write(frame)
