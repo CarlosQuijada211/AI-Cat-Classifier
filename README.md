@@ -35,9 +35,22 @@ Although developed around my own cats, the project demonstrates transferable ski
 - **Training/Validation split**: 80% training and 20% validation
 - **Normalization**: pixel values scaled to [0, 1][1./255]
 
-| Cleo | Gataki |
-|:----:|:-----:|
-| ![Cleo1](images/cleo1.jpg)<br>![Cleo2](images/cleo2.jpg) | ![Gataki1](images/gataki1.jpg)<br>![Gataki2](images/gataki2.jpg) |
+<table align="center">
+  <tr>
+    <th>Cleo</th>
+    <th>Gataki</th>
+  </tr>
+  <tr>
+    <td>
+      <img src="Assets/cleo_01.jpg" alt="Cleo1" width="200"/><br>
+      <img src="Assets/cleo_02.jpg" alt="Cleo2" width="200"/>
+    </td>
+    <td>
+      <img src="Assets/gataki_01.jpg" alt="Gataki1" width="200"/><br>
+      <img src="Assets/gataki_02.jpg" alt="Gataki2" width="200"/>
+    </td>
+  </tr>
+</table>
 
 ### Data Augmentation
 In order to tackle the problem of having a relatively small data set, data augmentation was used:
@@ -77,3 +90,4 @@ These limitations are likely due to the small dataset size and data imbalance in
 - Thanks to TensorFlow/Keras for providing the deep learning framework.
 - Inspired by CS50AI "Traffic" course project.
 - Special thanks to my cats for being patient test subjects. 
+
